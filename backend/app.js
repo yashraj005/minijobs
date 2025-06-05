@@ -1,6 +1,6 @@
 // app.js
 
-//mongodb://localhost:27017/mini
+//mongodb+srv://yashrajkajale9:VFL8VxNTi6E2Jexg@cluster2.fddexvo.mongodb.net/mini
 import express from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors';
