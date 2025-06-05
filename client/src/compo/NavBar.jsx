@@ -20,10 +20,10 @@ const NavBar = ({ onAddClick }) => {
           <button onClick={onAddClick}>Add Mini Work</button>
         )}
       </div>
-      <div className="login-register">
+      {/* <div className="login-register">
         <NavLink to="/login" className="logout-btn">LogIn</NavLink>
         <NavLink to="/register" className="register-btn">Register</NavLink>
-      </div>
+      </div> */}
     </div>
   );
 };
