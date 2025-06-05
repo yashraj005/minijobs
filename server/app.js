@@ -1,11 +1,10 @@
 // app.js
-
-//mongodb+srv://yashrajkajale9:VFL8VxNTi6E2Jexg@cluster2.fddexvo.mongodb.net/mini
 import express from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors';
 import dotenv from 'dotenv';
-import Job from './models/Job.js'; // ✅ import the correct model
+import Job from './models/Job.js';
+import { isValidObjectId } from 'mongoose';
 
 dotenv.config();
 
@@ -13,7 +12,9 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: process.env.CORS_ORIGIN || '*', // Set your frontend URL in env for production
+}));
 app.use(express.json());
 
 // MongoDB Connection
@@ -55,29 +56,55 @@ app.post('/api/jobs', async (req, res) => {
 
 // Delete a job by ID
 app.delete('/api/jobs/:id', async (req, res) => {
-    try {
-      const job = await Job.findByIdAndDelete(req.params.id);
-      res.json({ message: 'Job deleted', job });
-    } catch (err) {
-      res.status(500).json({ error: 'Failed to delete job' });
-    }
+  const id = req.params.id;
+  if (!isValidObjectId(id)) {
+    return res.status(400).json({ error: 'Invalid job ID' });
+  }
+  try {
+    const job = await Job.findByIdAndDelete(id);
+    if (!job) return res.status(404).json({ error: 'Job not found' });
+    res.json({ message: 'Job deleted', job });
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to delete job' });
+  }
+});
+
+// Update a job by ID
+app.put('/api/jobs/:id', async (req, res) => {
+  const id = req.params.id;
+  if (!isValidObjectId(id)) {
+    return res.status(400).json({ error: 'Invalid job ID' });
+  }
+  const { title, description, amount } = req.body;
+  try {
+    const job = await Job.findByIdAndUpdate(
+      id,
+      { title, description, amount },
+      { new: true }
+    );
+    if (!job) return res.status(404).json({ error: 'Job not found' });
+    res.json(job);
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to update job' });
+  }
+});
+
+// Optional: Serve React frontend in production
+/*
+import path from 'path';
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, '../client/build')));
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, '../client', 'build', 'index.html'));
   });
-  
-  // Update a job by ID
-  app.put('/api/jobs/:id', async (req, res) => {
-    const { title, description, amount } = req.body;
-    try {
-      const job = await Job.findByIdAndUpdate(
-        req.params.id,
-        { title, description, amount },
-        { new: true }
-      );
-      res.json(job);
-    } catch (err) {
-      res.status(500).json({ error: 'Failed to update job' });
-    }
-  });
-  
+}
+*/
+
+// Global error handler (optional)
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).json({ error: 'Something broke!' });
+});
 
 // Start server
 app.listen(PORT, () => {

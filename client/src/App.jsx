@@ -10,6 +10,7 @@ import Register from './pages/Register';
 import StartHome from './compo/StartHome';
 import LogIn from './pages/LogIn';
 import Price from './compo/Price';
+import Login from './pages/LogIn';
 
 function App() {
 
@@ -39,7 +40,7 @@ function App() {
       />
       <Route path ="/login" element ={
         <div>
-          <LogIn/>
+          <Login/>
         </div>
       }
       />
