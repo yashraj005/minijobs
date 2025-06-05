@@ -1,0 +1,88 @@
+/* Navbar container */
+.navbar {
+    width: 94vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #222;
+    padding: 15px 30px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Brand Name (MiniJobs) */
+  .brand {
+    font-size: 22px;
+    font-weight: bold;
+    color: #00aaff;
+    margin: 0;
+  }
+  
+  /* Navigation Links */
+  .nav-links {
+    display: flex;
+    gap: 25px;
+  }
+  
+  .nav-links a {
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 600;
+    color: white;
+    padding: 10px 15px;
+    transition: color 0.3s ease-in-out;
+    position: relative;
+  }
+  
+  /* Hover effect */
+  .nav-links a:hover {
+    color: #00aaff;
+  }
+  
+  /* Active link styling */
+  .nav-links a.active {
+    color: #00aaff;
+    font-weight: bold;
+  }
+  
+  /* Underline animation */
+  .nav-links a::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -5px;
+    width: 0;
+    height: 3px;
+    background: #00aaff;
+    transition: width 0.3s ease-in-out, left 0.3s ease-in-out;
+  }
+  
+  .nav-links a:hover::after,
+  .nav-links a.active::after {
+    width: 100%;
+    left: 0;
+  }
+  
+  /* Logout Button */
+  .logout-btn , .register-btn {
+    background: linear-gradient(135deg, #0db9ed, #0400ff);
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+  }
+  
+  .logout-btn:hover , .register-btn:hover {
+    background: linear-gradient(135deg, #07b6f1, #02a8df);
+    transform: scale(1.05);
+  }
+
+
+  .login-register {
+    display: flex;
+    gap: 20px;
+  }
+  

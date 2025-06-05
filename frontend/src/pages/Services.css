@@ -1,0 +1,105 @@
+/* Services Container */
+.services-container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    text-align: center;
+    background: #1c1a1a;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Heading */
+.services-container h1 {
+    color: #ffffff;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* Services List */
+.services-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    padding: 0;
+    list-style: none;
+}
+
+/* Service Items */
+.services-list li {
+    background: #292929;
+    color: #ffffff;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    border: 2px solid transparent;
+}
+
+/* Hover Effect */
+.services-list li:hover {
+    border: 2px solid #007bff;
+    transform: scale(1.05);
+}
+
+/* Booking Section */
+.booking-section {
+    margin-top: 20px;
+    background: #292929;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    border-radius: 10px;
+    color: white;
+}
+
+.booking-section label {
+    display: block;
+    margin-top: 10px;
+    font-size: 16px;
+}
+
+.subscribe-button{
+    text-decoration: underline;
+}
+
+.booking-section input {
+    /* width: 80%; */
+    padding: 8px;
+    margin-top: 5px;
+    border-radius: 5px;
+    border: none;
+    text-align: center;
+
+}
+
+.booking-section > .inputs{
+    display: flex;
+    gap: 20px;
+}
+
+.booking-section button {
+    margin-top: 15px;
+    padding: 10px 20px;
+    background: #007bff;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+}
+
+.booking-section button:hover {
+    background: #0056b3;
+}
+
+
+.booking-section input{
+    
+    width: 100px;
+}

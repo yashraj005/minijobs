@@ -1,0 +1,65 @@
+/* Contact Form Styling */
+.contact-container {
+    max-width: 500px;
+    margin: 50px auto;
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(13, 13, 13, 0.1);
+    text-align: center;
+  }
+  
+  /* Title */
+  .contact-container h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+  }
+  
+  /* Form Fields */
+  .contact-container input,
+  .contact-container textarea {
+    width: 90%;
+    padding: 10px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  /* Textarea */
+  .contact-container textarea {
+    resize: none;
+    height: 100px;
+  }
+  
+  /* Submit Button */
+  .contact-container button {
+    width: 40%;
+    padding: 12px;
+    background: #007bff;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+  }
+  
+  .contact-container button:hover {
+    background: #0056b3;
+  }
+  
+  /* Success & Error Messages */
+  .success-message {
+    color: green;
+    font-weight: bold;
+    margin-top: 10px;
+  }
+  
+  .error-message {
+    color: red;
+    font-weight: bold;
+    margin-top: 10px;
+  }
+  

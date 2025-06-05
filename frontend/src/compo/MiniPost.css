@@ -1,0 +1,61 @@
+/* MiniPost.css */
+.mini-post {
+    background: linear-gradient(145deg, #1a1a1a, #111111);
+    border: 1px solid #2f2f2f;
+    border-radius: 16px;
+    padding: 1.5rem;
+    margin: 1rem;
+    color: #f0f0f0;
+    box-shadow: 0 4px 15px rgba(0, 255, 153, 0.1);
+    width: 300px;
+    transition: all 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .mini-post:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 6px 25px rgba(0, 255, 153, 0.25);
+  }
+  
+  .mini-post h3 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.4rem;
+    color: #00ff99;
+  }
+  
+  .mini-post .desc {
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+    color: #cccccc;
+  }
+  
+  .mini-post .amount {
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: #00ffcc;
+    margin-bottom: 1rem;
+  }
+  
+  .card-actions {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .card-actions button {
+    background: #00ff99;
+    color: #111;
+    border: none;
+    padding: 0.4rem 0.8rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: background 0.2s ease;
+    font-weight: 600;
+  }
+  
+  .card-actions button:hover {
+    background: #00cc7a;
+  }
+  

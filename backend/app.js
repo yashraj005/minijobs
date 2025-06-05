@@ -1,0 +1,85 @@
+// app.js
+
+//mongodb://localhost:27017/mini
+import express from 'express';
+import mongoose from 'mongoose';
+import cors from 'cors';
+import dotenv from 'dotenv';
+import Job from './models/Job.js'; // ✅ import the correct model
+
+dotenv.config();
+
+const app = express();
+const PORT = process.env.PORT || 5000;
+
+// Middleware
+app.use(cors());
+app.use(express.json());
+
+// MongoDB Connection
+mongoose.connect(process.env.MONGO_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
+.then(() => console.log('✅ Connected to MongoDB'))
+.catch((err) => console.error('❌ MongoDB connection error:', err));
+
+// ------------------ ROUTES ------------------
+
+// Basic test route
+app.get('/api/test', (req, res) => {
+  res.json({ message: 'Hello from backend!' });
+});
+
+// Get all jobs
+app.get('/api/jobs', async (req, res) => {
+  try {
+    const jobs = await Job.find();
+    res.json(jobs);
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to fetch jobs' });
+  }
+});
+
+// Create a new job
+app.post('/api/jobs', async (req, res) => {
+  const { title, description, amount } = req.body;
+  try {
+    const newJob = new Job({ title, description, amount });
+    await newJob.save();
+    res.status(201).json(newJob);
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to create job' });
+  }
+});
+
+// Delete a job by ID
+app.delete('/api/jobs/:id', async (req, res) => {
+    try {
+      const job = await Job.findByIdAndDelete(req.params.id);
+      res.json({ message: 'Job deleted', job });
+    } catch (err) {
+      res.status(500).json({ error: 'Failed to delete job' });
+    }
+  });
+  
+  // Update a job by ID
+  app.put('/api/jobs/:id', async (req, res) => {
+    const { title, description, amount } = req.body;
+    try {
+      const job = await Job.findByIdAndUpdate(
+        req.params.id,
+        { title, description, amount },
+        { new: true }
+      );
+      res.json(job);
+    } catch (err) {
+      res.status(500).json({ error: 'Failed to update job' });
+    }
+  });
+  
+
+// Start server
+app.listen(PORT, () => {
+  console.log(`🚀 Server running on http://localhost:${PORT}`);
+});
