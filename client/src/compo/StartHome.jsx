@@ -1,9 +1,7 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
 import './StartHome.css';
 import StartHomeImage from '../assets/StartHome.jpg'
 const StartHome = () => {
-  const navigate = useNavigate();
 
   return (
     <div className="start-home">
@@ -22,7 +20,7 @@ const StartHome = () => {
           <p>
             From plumbing to pet sitting — we help you find trusted, verified help near you.
           </p>
-          <button onClick={() => navigate('/register')} className='started'>Get Started</button>
+          
         </div>
       </div>
     </div>

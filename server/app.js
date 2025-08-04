@@ -108,5 +108,5 @@ app.use((err, req, res, next) => {
 
 // Start server
 app.listen(PORT, () => {
-  console.log(`🚀 Server running on http://localhost:${PORT}`);
+  console.log(`🚀 mongodb+srv://yashrajkajale9:VFL8VxNTi6E2Jexg@cluster2.fddexvo.mongodb.net/:${PORT}`);
 });

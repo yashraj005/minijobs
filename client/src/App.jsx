@@ -6,7 +6,6 @@ import Services from './pages/Services';
 import About from './pages/About';
 import Contact from './pages/Contact';
 import Home from './pages/Home';
-import Register from './pages/Register';
 import StartHome from './compo/StartHome';
 import Price from './compo/Price';
 

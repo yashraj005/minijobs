@@ -15,7 +15,7 @@ const Home = () => {
 
   // Load jobs on first render
   useEffect(() => {
-    fetch('http://localhost:5000/api/jobs')
+    fetch('mongodb+srv://yashrajkajale9:VFL8VxNTi6E2Jexg@cluster2.fddexvo.mongodb.net/api/jobs')
       .then((res) => res.json())
       .then((data) => setJobs(data))
       .catch((err) => console.error('Error fetching jobs:', err));
@@ -27,8 +27,8 @@ const Home = () => {
 
     const method = editingId ? 'PUT' : 'POST';
     const url = editingId
-      ? `http://localhost:5000/api/jobs/${editingId}`
-      : 'http://localhost:5000/api/jobs';
+      ? `mongodb+srv://yashrajkajale9:VFL8VxNTi6E2Jexg@cluster2.fddexvo.mongodb.net/api/jobs/${editingId}`
+      : 'mongodb+srv://yashrajkajale9:VFL8VxNTi6E2Jexg@cluster2.fddexvo.mongodb.net/';
 
     fetch(url, {
       method,
@@ -52,7 +52,7 @@ const Home = () => {
   };
 
   const handleDelete = (id) => {
-    fetch(`http://localhost:5000/api/jobs/${id}`, {
+    fetch(`mongodb+srv://yashrajkajale9:VFL8VxNTi6E2Jexg@cluster2.fddexvo.mongodb.net/api/jobs/${id}`, {
       method: 'DELETE',
     })
     .then(() => {
